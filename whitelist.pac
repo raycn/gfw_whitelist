@@ -136,8 +136,7 @@ function FindProxyForURL(url, host)
         shExpMatch(host, "(*\.|)serving-sys.com")|| 
         shExpMatch(host, "(*\.|)legolas-media.com")||
         shExpMatch(host, "(*\.|)harrenmedianetwork.com")||
-        shExpMatch(host, "(*\.|)ytimg.com")||
-        shExpMatch(host, "(*\.|)google-analytics.com")
+        shExpMatch(host, "(*\.|)ytimg.com")
     ) {
 
         return 'DIRECT';
