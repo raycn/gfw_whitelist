@@ -20,7 +20,7 @@ function FindProxyForURL(url, host)
      *                                                 *
      * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-    var ip_address = '172.16.66.77:3000';
+    var ip_address = '172.19.1.2:9217';
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * 
      *                                                 *
