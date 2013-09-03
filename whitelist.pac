@@ -1,19 +1,18 @@
 /*
             gfw_whitelist.pac
-  
+
             GFW Whitelist
             - inspired by autoproxy and chnroutes
-  
+
             v1.2
             Author: n0gfwall0@gmail.com
             License: MIT License
 
                                                           */
 
-
 function FindProxyForURL(url, host)
 {
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * 
+    /* * * * * * * * * * * * * * * * * * * * * * * * * *
      *                                                 *
      *  一定要换成你的ip地址                           *
      *  Replace your proxy ip-address:port here!!      *
@@ -22,13 +21,13 @@ function FindProxyForURL(url, host)
 
     var ip_address = '127.0.0.1:8080';
 
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * 
+    /* * * * * * * * * * * * * * * * * * * * * * * * * *
      *                                                 *
      * 代理类型 (翻墙一般适用 SOCKS 或 HTTPS)          *
      * Proxy type                                      *
      *                                                 *
      * * * * * * * * * * * * * * * * * * * * * * * * * */
-    var proxy_type = 'SOCKS5'; // 'PROXY' or 'SOCKS' 
+    var proxy_type = 'SOCKS5'; // 'PROXY' or 'SOCKS'
 
     // HTTPS 是用于 Chrome 的安全代理
     // http://www.chromium.org/developers/design-documents/secure-web-proxy
@@ -58,12 +57,12 @@ function FindProxyForURL(url, host)
         // in theory, we can add chnroutes test here.
         // but that is probably too much an overkill.
         return 'DIRECT';
-    } 
+    }
 
     // a very long list. trust chrome will cache the results
 
     // skip top Chinese sites
-    // source: 
+    // source:
     // (1) custom list
     // (2) https://dl-web.dropbox.com/u/3241202/apps/chn-cdn/dnsmasq.server.conf
     // (3) Domestic CDN and cloud
@@ -75,26 +74,26 @@ function FindProxyForURL(url, host)
 
     // custom list. feel free to add.
     // mostly ad servers and img servers
-    if( 
+    if(
         shExpMatch(host, "(*\.|)kandian.com") ||
         shExpMatch(host, "(*\.|)homeinns.com") ||
-        shExpMatch(host, "(*\.|)sinajs.com") || 
+        shExpMatch(host, "(*\.|)sinajs.com") ||
         shExpMatch(host, "(*\.|)douban.fm")    ||
-        shExpMatch(host, "(*\.|)pixlr.com") || 
+        shExpMatch(host, "(*\.|)pixlr.com") ||
         shExpMatch(host, "(*\.|)jing.fm")      ||
         shExpMatch(host, "(*\.|)oadz.com")  ||
         shExpMatch(host, "(*\.|)youshang.com") ||
-        shExpMatch(host, "(*\.|)kuaidi100.com") || 
+        shExpMatch(host, "(*\.|)kuaidi100.com") ||
         shExpMatch(host, "(*\.|)sinahk.net")   ||
-        shExpMatch(host, "(*\.|)kuaidi100.com") || 
+        shExpMatch(host, "(*\.|)kuaidi100.com") ||
         shExpMatch(host, "(*\.|)adsame.com")   ||
-        shExpMatch(host, "(*\.|)scorecardresearch.com") || 
+        shExpMatch(host, "(*\.|)scorecardresearch.com") ||
         shExpMatch(host, "(*\.|)imrworldwide.com")||
-        shExpMatch(host, "(*\.|)wrating.com") || 
+        shExpMatch(host, "(*\.|)wrating.com") ||
         shExpMatch(host, "(*\.|)mediav.com")   ||
-        shExpMatch(host, "(*\.|)lycos.com") || 
+        shExpMatch(host, "(*\.|)lycos.com") ||
         shExpMatch(host, "(*\.|)gamesville.com")||
-        shExpMatch(host, "(*\.|)lygo.com") || 
+        shExpMatch(host, "(*\.|)lygo.com") ||
         shExpMatch(host, "(*\.|)quantserve.com")||
         shExpMatch(host, "(*\.|)miaozhen.com")  ||
         shExpMatch(host, "(*\.|)qstatic.com")  ||
@@ -133,7 +132,7 @@ function FindProxyForURL(url, host)
         shExpMatch(host, "(*\.|)adnxs.com")  ||
         shExpMatch(host, "(*\.|)mookie1.com")  ||
         shExpMatch(host, "(*\.|)pubmatic.com")  ||
-        shExpMatch(host, "(*\.|)serving-sys.com")|| 
+        shExpMatch(host, "(*\.|)serving-sys.com")||
         shExpMatch(host, "(*\.|)legolas-media.com")||
         shExpMatch(host, "(*\.|)harrenmedianetwork.com")||
         shExpMatch(host, "(*\.|)koudaitong.com")||
@@ -145,7 +144,7 @@ function FindProxyForURL(url, host)
 
 
     // Chinese cloud
-    if( 
+    if(
         shExpMatch(host, "(*\.|)alipayobjects.com") ||
         shExpMatch(host, "(*\.|)aliyun.com") ||
         shExpMatch(host, "(*\.|)alicdn.com")
@@ -154,7 +153,7 @@ function FindProxyForURL(url, host)
     }
 
     // ihipop's list
-    if( 
+    if(
         shExpMatch(host, "(*\.|)renren.com") ||
         shExpMatch(host, "(*\.|)sina.com") ||
         shExpMatch(host, "(*\.|)iask.com") ||
@@ -184,9 +183,9 @@ function FindProxyForURL(url, host)
 
         return 'DIRECT';
     }
-  
+
     // alexa top 500 chinese sites
-    if( 
+    if(
         shExpMatch(host, "(*\.|)baidu.com")  ||
         shExpMatch(host, "(*\.|)qq.com") ||
         shExpMatch(host, "(*\.|)taobao.com")||
@@ -568,7 +567,7 @@ function FindProxyForURL(url, host)
         shExpMatch(host, "(*\.|)fantong.com")
     ) {
         return 'DIRECT';
-    } 
+    }
 
     // if none of above cases, it is always safe to use the proxy
     return proxy;
@@ -579,21 +578,21 @@ function FindProxyForURL(url, host)
     MIT License
     Copyright (C) 2012 n0gfwall0@gmail.com
 
-    Permission is hereby granted, free of charge, to any person obtaining a 
-    copy of this software and associated documentation files (the "Software"), 
-    to deal in the Software without restriction, including without limitation 
-    the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-    and/or sell copies of the Software, and to permit persons to whom the 
+    Permission is hereby granted, free of charge, to any person obtaining a
+    copy of this software and associated documentation files (the "Software"),
+    to deal in the Software without restriction, including without limitation
+    the rights to use, copy, modify, merge, publish, distribute, sublicense,
+    and/or sell copies of the Software, and to permit persons to whom the
     Software is furnished to do so, subject to the following conditions:
 
-    The above copyright notice and this permission notice shall be included in 
+    The above copyright notice and this permission notice shall be included in
     all copies or substantial portions of the Software.
 
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
     IN THE SOFTWARE.
 
